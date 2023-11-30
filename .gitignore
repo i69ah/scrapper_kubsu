@@ -1,0 +1,4 @@
+rabbitmq/data/*
+postgres/data/*
+code/.venv
+.idea

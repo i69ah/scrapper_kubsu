@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>{{ article.title }}</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-4">
+        <div class="col rounded shadow py-3 px-5">
+            <div class="mb-3 d-flex justify-content-between">
+                <div><small class="text-muted">{{ article.get_author_view }}</small></div>
+                <div><small class="text-muted">
+                    <a href="{{ article.source.url }}" class="text-decoration-none">{{ article.source.name }}</a>
+                </small></div>
+            </div>
+            <div class="mb-2 fw-bold fs-2">Annotation</div>
+            <div class="mb-2">{{ article.annotation }}</div>
+            <hr />
+            <div class="mb-2 fw-bold fs-2">Content</div>
+            <div class="mb-2 line-clamp-4">{{ article.content }}</div>
+            <hr />
+            <div><a href="{{ article.url }}">Original URL</a></div>
+        </div>
+    </div>
+{% endblock %}

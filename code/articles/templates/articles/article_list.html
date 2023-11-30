@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Article list{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>Article list</h1>
+        </div>
+    </div>
+    <hr>
+    {% include 'pagination.html' with page=page_obj %}
+    {% for article in page_obj %}
+        <div class="row mb-4">
+            <div class="col rounded-3 shadow py-3 px-5">
+                <h2 class="mb-3">
+                    <a href="{{ article.get_absolute_url }}" class="text-decoration-none">{{ article.title }}</a>
+                </h2>
+                <div class="mb-2 line-clamp-4">{{ article.annotation }}</div>
+                <div class="mb-3 d-flex justify-content-between">
+                    <div><small class="text-muted">{{ article.get_author_view }}</small></div>
+                    <div><small class="text-muted">
+                        <a href="{{ article.source.url }}" class="text-decoration-none">{{ article.source.name }}</a>
+                    </small></div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% include 'pagination.html' with page=page_obj %}
+{% endblock %}

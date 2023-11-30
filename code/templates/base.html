@@ -1,0 +1,35 @@
+{% load static %}
+
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'articles/custom.css' %}" rel="stylesheet">
+    <title>{% block title%}Title{% endblock %}</title>
+</head>
+<body data-bs-theme="dark">
+<header class="container">
+    {% block header %}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'article-list' %}">Scrapper</a>
+        </div>
+    </nav>
+    {% endblock %}
+</header>
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+<footer>{% block footer %}{% endblock %}</footer>
+</body>
+</html>
